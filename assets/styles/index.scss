@@ -1,1 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
+
+.row, div {
+  border: black solid 1px;
+  text-align: center;
+}

@@ -17,16 +17,50 @@
       <div class="container">
         <div class="row">
           <div class="col-sm">
-            Sign Up
+            <form action="/sign-up">
+              Name:<br>
+              <input type="text" name="name" placeholder="Mary Smith">
+              <br>
+              Email:<br>
+              <input type="email" name="email" placeholder="abc@abc.com">
+              <br>
+              Password:<br>
+              <input type="password" name="password" placeholder="password">
+              <br>
+              Confirm Password:<br>
+              <input type="password" name="password" placeholder="type same password">
+              <br><br>
+              <input type="submit" value="Sign up">
+            </form>
           </div>
           <div class="col-sm">
-            Sign In
+            <form action="/sign-in">
+              Email:<br>
+              <input type="email" name="email" placeholder="abc@abc.com">
+              <br>
+              Password:<br>
+              <input type="password" name="password" placeholder="password">
+              <br><br>
+              <input type="submit" value="Sign In">
+            </form>
           </div>
           <div class="col-sm">
-            Change Password
+            <form action="/change-password">
+              Email:<br>
+              <input type="email" name="email" placeholder="abc@abc.com">
+              <br>
+              Old Password:<br>
+              <input type="password" name="change-password" placeholder="old password">
+              <br>
+              New Password:<br>
+              <input type="password" name="change-password" placeholder="new password">
+              <br>
+              <br>
+              <input type="submit" value="Change Password">
+            </form>
           </div>
           <div class="col-sm">
-            Sign Out
+            <button type="button" name="Sign Out" value="Sign Out">Sign Out</button>
           </div>
         </div>
       </div>

@@ -8,4 +8,5 @@
 
 $(() => {
   // your JS code goes here
+  // $('form').on('click', console.log('click'))
 })
