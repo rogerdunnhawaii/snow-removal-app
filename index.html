@@ -17,18 +17,18 @@
       <div class="container">
         <div class="row">
           <div class="col-sm">
-            <form action="/sign-up">
+            <form id='sign-up' action="/sign-up">
               Name:<br>
               <input type="text" name="name" placeholder="Mary Smith">
               <br>
               Email:<br>
-              <input type="email" name="email" placeholder="abc@abc.com">
+              <input type="email" name="credentials[email]" placeholder="abc@abc.com">
               <br>
               Password:<br>
-              <input type="password" name="password" placeholder="password">
+              <input type="password" name="credentials[password]" placeholder="password">
               <br>
               Confirm Password:<br>
-              <input type="password" name="password" placeholder="type same password">
+              <input type="password" name="credentials[password_confirmation]" placeholder="type same password">
               <br><br>
               <input type="submit" value="Sign up">
             </form>
