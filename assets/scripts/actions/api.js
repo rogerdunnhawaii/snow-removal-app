@@ -49,10 +49,31 @@ const createJob = function (data) {
   })
 }
 
+const viewJobs = () => {
+  return $.ajax({
+    url: config.apiUrl + '/jobs',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
+const deleteJob = (id) => {
+  return $.ajax({
+    url: config.apiUrl + '/jobs/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
-  createJob
+  createJob,
+  viewJobs,
+  deleteJob
 }

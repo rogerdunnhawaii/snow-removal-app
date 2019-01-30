@@ -86,6 +86,8 @@ $(() => {
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out').on('click', events.onSignOut)
   $('#create-job').on('submit', events.onCreateJob)
+  $('#view-jobs').on('click', events.onViewJobs)
+  $('#job-list-body').on('click', '#delete-button', events.onDeleteJob)
   $("input[data-type='currency']").on({
     keyup: function () {
       formatCurrency($(this))

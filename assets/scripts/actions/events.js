@@ -42,10 +42,29 @@ const onCreateJob = (event) => {
     .then(ui.onCreateJobSuccess)
     .catch(ui.onCreateJobFailure)
 }
+
+const onViewJobs = (event) => {
+  event.preventDefault()
+  api.viewJobs()
+    .then(ui.onViewJobsSuccess)
+    .catch(ui.onViewJobsFailure)
+}
+
+const onDeleteJob = (event) => {
+  event.preventDefault()
+  console.log(event)
+  const id = event.target.dataset.id
+  console.log(id)
+  api.deleteJob(id)
+    .then(ui.onDeleteJobSuccess)
+    .catch(ui.onDeleteJobFailure)
+}
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
   onSignOut,
-  onCreateJob
+  onCreateJob,
+  onViewJobs,
+  onDeleteJob
 }

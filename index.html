@@ -17,7 +17,7 @@
       <div class="container">
         <div class="row user">
           <div class="col-sm">
-            <form id='sign-up' action="/sign-up">
+            <form id='sign-up' action="sign-up">
               Name:<br>
               <input type="text" name="name" placeholder="Mary Smith">
               <br>
@@ -34,7 +34,7 @@
             </form>
           </div>
           <div class="col-sm">
-            <form id='sign-in'action="/sign-in">
+            <form id='sign-in'action="sign-in">
               Email:<br>
               <input type="email" name="credentials[email]" placeholder="abc@abc.com">
               <br>
@@ -45,7 +45,7 @@
             </form>
           </div>
           <div class="col-sm">
-            <form id='change-password' action="/change-password">
+            <form id='change-password' action="change-password">
               Email:<br>
               <input type="email" name="email" placeholder="abc@abc.com">
               <br>
@@ -95,17 +95,36 @@
             </form>
             Create Job
           </div>
-          <div class="col-sm">
-            View all Jobs
+
+          <div id='view-jobs' class="col-sm">
+            <button type="button" name="button">View all Jobs</button>
+
+            <table class="table table-striped">
+                <h3>List of Jobs Below:</h3>
+
+            <thead>
+              <tr>
+                <th>Customer</th>
+                <th>Worker</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+              <tbody id="job-list-body"></tbody>
+
+          </table>
           </div>
+
           <div class="col-sm">
             View one Job
           </div>
           <div class="col-sm">
-            Update Job
-          </div>
-          <div class="col-sm">
-            Delete Job
+            Edit Job
           </div>
         </div>
       </div>
