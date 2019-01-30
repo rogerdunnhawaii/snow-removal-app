@@ -10,4 +10,7 @@ const events = require('./actions/events.js')
 $(() => {
   // your JS code goes here
   $('#sign-up').on('submit', events.onSignUp)
+  $('#sign-in').on('submit', events.onSignIn)
+  $('#change-password').on('submit', events.onChangePassword)
+  $('#sign-out').on('click', events.onSignOut)
 })
