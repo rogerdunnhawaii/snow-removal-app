@@ -34,9 +34,18 @@ const onSignOut = () => {
     .catch(ui.onSignOutFailure)
 }
 
+const onCreateJob = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  api.createJob(data)
+    .then(ui.onCreateJobSuccess)
+    .catch(ui.onCreateJobFailure)
+}
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  onCreateJob
 }

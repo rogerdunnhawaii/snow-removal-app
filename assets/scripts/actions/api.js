@@ -38,9 +38,21 @@ const signOut = function () {
   })
 }
 
+const createJob = function (data) {
+  return $.ajax({
+    url: config.apiUrl + '/jobs',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  createJob
 }
