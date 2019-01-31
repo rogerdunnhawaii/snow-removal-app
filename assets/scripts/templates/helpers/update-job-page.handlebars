@@ -1,12 +1,13 @@
 
+
   <form id='update-job' data-id='{{job.id}}'>
-    Customer value:<br>
+    Customer Name:<br>
     <input type="text" name="job[Customer]" value="{{job.Customer}}">
   <br>
-  Worker value:<br>
+  Worker Name:<br>
   <input type="text" name="job[Worker]" value="{{job.Worker}}">
   <br>
-  Price:<br>
+  Price of Job:<br>
   <input type="text" name="job[Price]" value="{{job.Price}}" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" data-type="currency">
   <br>
   Address:<br>

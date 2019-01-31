@@ -79,10 +79,29 @@ function formatCurrency (input, blur) {
 
 $(() => {
   // your JS code goes here
+  $('#sign-up-button').click(function () {
+    $('#sign-up').fadeIn('slow')
+    $('#sign-up-button').fadeOut(1000)
+  })
+  $('#sign-in-button').click(function () {
+    $('#sign-in').fadeIn('slow')
+    $('#sign-in-button').fadeOut(1000)
+  })
+  $('#change-pw-button').click(function () {
+    $('#change-password').fadeIn('slow')
+    $('#change-pw-button').fadeOut(1000)
+  })
+  $('#create-job-button').click(function () {
+    $('#create-job').fadeIn('slow')
+    $('#create-job-button').fadeOut(1000)
+  })
+  $('#view-all-jobs-button').click(function () {
+    $('#view-all-jobs').fadeIn('slow')
+  })
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
-  $('#sign-out').on('click', events.onSignOut)
+  $('#sign-out-button').on('click', events.onSignOut)
   $('#create-job').on('submit', events.onCreateJob)
   $('#view-jobs').on('click', events.onViewJobs)
   $('#job-list-body').on('click', '#delete-button', events.onDeleteJob)

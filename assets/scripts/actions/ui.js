@@ -4,49 +4,63 @@ const updateJobPageTemplate = require('../templates/helpers/update-job-page.hand
 const oneJobPageTemplate = require('../templates/helpers/one-job-page.handlebars')
 
 const onSignUpSuccess = () => {
-  console.log('success')
+  $('h2').html('you have successfully signed up')
+  $('#sign-up').fadeOut(500)
 }
 
 const onSignUpFailure = () => {
-  console.log('failure')
+  $('h2').html('you have UNsuccessfully signed up')
 }
 
 const onSignInSuccess = (responseData) => {
-  console.log('success')
+  $('h2').html('you have successfully signed IN')
   store.user = responseData.user
+  $('#sign-out-button').show(500)
+  $('#change-pw-button').show(500)
+  $('#sign-in').fadeOut(500)
+  $('#sign-up-button').fadeOut(500)
+  $('#create-job-button').show(500)
+  $('#view-all-jobs-button').show(500)
+  $('.view-one-job').show(500)
 }
 
 const onSignInFailure = () => {
-  console.log('failure')
+  $('h2').html('you have UNsuccessfully signed IN')
 }
 
 const onChangePasswordSuccess = () => {
-  console.log('success')
+  $('h2').html('you have successfully changed password')
+  $('#change-password').fadeOut(500)
+    $('#change-pw-button').fadeIn(500)
 }
 
 const onChangePasswordFailure = () => {
-  console.log('failure')
+    $('h2').html('you have UNsuccessfully changed password')
 }
 
 const onSignOutSuccess = () => {
   store.user = null
-  console.log('success')
+  $('h2').html('Successfully signed OUT')
+  $('#sign-up-button').fadeIn(500)
+  $('#sign-in-button').fadeIn(500)
+  $('#sign-out-button').fadeOut(500)
+  $('#change-pw-button').fadeOut(500)
 }
 
 const onSignOutFailure = () => {
-  console.log('failure')
+  $('h2').html('you have FAILED at signing out')
 }
 
 const onCreateJobSuccess = () => {
-  console.log('success')
+  $('h2').html('Successfully created job')
 }
 
 const onCreateJobFailure = () => {
-  console.log('failure')
+  $('h2').html('UNsuccessfully created job')
 }
 
 const onViewJobsSuccess = (responseData) => {
-  console.log('success')
+  $('h2').html('Successfully able to view Jobs')
   $('#job-list-body').html('')
   const data = responseData
   console.log(data)
@@ -55,18 +69,18 @@ const onViewJobsSuccess = (responseData) => {
 }
 
 const onViewJobsFailure = () => {
-  console.log('failure')
+  $('h2').html('Sadly UNable to view jobs')
 }
 
 const onDeleteJobSuccess = () => {
-  console.log('success')
+  $('h2').html('Job successfully deleted')
 }
 const onDeleteJobFailure = () => {
-  console.log('failure')
+  $('h2').html('Job is still around, UNsuccessful at deleting')
 }
 
 const onViewJobSuccess = (responseData) => {
-  console.log('success in onViewJobSuccess')
+  $('h2').html('You have now viewing the one job you asked for')
   $('#update-job-form').html('')
   const data = responseData
   const updateJobPageHtml = updateJobPageTemplate({
@@ -75,19 +89,19 @@ const onViewJobSuccess = (responseData) => {
 }
 
 const onViewJobFailure = () => {
-  console.log('failure onViewJob')
+  $('h2').html('Unable to locate the one job you were looking for')
 }
 
 const onUpdateJobSuccess = () => {
-  console.log('successfully Updated job')
+  $('h2').html('successfully Updated job')
 }
 
 const onUpdateJobFailure = () => {
-  console.log('failed to Updated job')
+  $('h2').html('failed to Updated job')
 }
 
 const onViewOneJobSuccess = (responseData) => {
-  console.log('success')
+  $('h2').html('you are now looking at one job')
   $('#job-list-body').html('')
   const data = responseData
   console.log(data)
@@ -96,7 +110,7 @@ const onViewOneJobSuccess = (responseData) => {
 }
 
 const onViewOneJobFailure = () => {
-  console.log('failure')
+  $('h2').html('failed at viewing one job')
 }
 module.exports = {
   onSignUpSuccess,

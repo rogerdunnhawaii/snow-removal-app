@@ -6,6 +6,8 @@
   <th>{{job.Date}}</th>
   <th>{{job.Time}}</th>
   <th>{{job.status}}</th>
-  <th><button  data-id='{{job.id}}' id="edit-button">Edit</button> </th>
+  <th>
+    <button data-id='{{job.id}}' id="edit-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Edit</button>
+  </th>
   <th><button data-id='{{job.id}}' id="delete-button">Delete</button></tr>
 </tr>

@@ -7,17 +7,38 @@
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+
+
     </head>
     <body>
-      <h1>Roger's Snow Removal App</h1>
+      <nav>
+<div class="container">
+  <div class="top-left">
+    <button id="sign-up-button">Sign Up</button>
+    <button id="sign-in-button">Sign In</button>
+  </div>
+  <div class="logo">
+  <h1>Roger's Snow Removal App</h1>
+  </div>
+  <div class="top-right">
+    <button id="change-pw-button">Change Password</button>
+    <button id="sign-out-button" type="button" name="Sign Out" value="Sign Out">Sign Out</button>
+  </div>
+</div>
+      </nav>
 
+
+      <h2>Welcome to my app!</h2>
       <div class="container">
         <div class="row user">
-          <div class="col-sm">
-            <form id='sign-up' action="sign-up">
+
+      <div class="col-sm">
+        <form id='sign-up' action="sign-up" class="w3-bar-item w3-button">
               Name:<br>
               <input type="text" name="name" placeholder="Mary Smith">
               <br>
@@ -32,18 +53,21 @@
               <br><br>
               <input type="submit" value="Sign up">
             </form>
-          </div>
-          <div class="col-sm">
-            <form id='sign-in'action="sign-in">
-              Email:<br>
-              <input type="email" name="credentials[email]" placeholder="abc@abc.com">
-              <br>
-              Password:<br>
-              <input type="password" name="credentials[password]" placeholder="password">
-              <br><br>
-              <input type="submit" value="Sign In">
-            </form>
-          </div>
+        </div>
+
+
+      <div class="col-sm">
+        <form id='sign-in'action="sign-in">
+          Email:<br>
+          <input type="email" name="credentials[email]" placeholder="abc@abc.com">
+          <br>
+          Password:<br>
+          <input type="password" name="credentials[password]" placeholder="password">
+          <br><br>
+          <input type="submit" value="Sign In">
+        </form>
+    </div>
+
           <div class="col-sm">
             <form id='change-password' action="change-password">
               Email:<br>
@@ -59,12 +83,11 @@
               <input type="submit" value="Change Password">
             </form>
           </div>
-          <div class="col-sm">
-            <button id="sign-out" type="button" name="Sign Out" value="Sign Out">Sign Out</button>
-          </div>
         </div>
+
         <div class="row jobs">
           <div class="col-sm">
+            <button id='create-job-button'>Create Job</button>
             <form id='create-job' action="/jobs">
               Customer Name:<br>
               <input type="text" name="job[Customer]" placeholder="Customer Name">
@@ -93,15 +116,17 @@
               <br>
               <input type="submit" value="Create Job">
             </form>
-            Create Job
           </div>
 
           <div id='view-jobs' class="col-sm">
-            <button type="button" name="button">View all Jobs</button>
+            <button id='view-all-jobs-button'>View all Jobs</button>
 
-            <table class="table table-striped">
-                <h3>List of Job/Jobs Below:</h3>
+            <form class="view-one-job">
+              <input type="number" name="job[id]" value="" placeholder="Search by Job ID">
+              <input type="submit" id="view-one-job-button" value='View one job'>
+            </form>
 
+            <table id='view-all-jobs' class="table table-striped">
             <thead>
               <tr>
                 <th>Customer</th>
@@ -118,20 +143,10 @@
               <tbody id="job-list-body"></tbody>
           </table>
           </div>
-
-          <div class="col-sm">
-
-            <form class="view-one-job">
-              <input type="number" name="job[id]" value="" placeholder="Search by Job ID">
-              <input type="submit" id="view-one-job-button" >
-            </form>
-          </div>
           <div class="col-sm" id="update-job-form">
-            Where edit job info should go
 
           </div>
         </div>
       </div>
-
     </body>
 </html>
