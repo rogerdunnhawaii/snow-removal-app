@@ -59,6 +59,16 @@ const viewJobs = () => {
   })
 }
 
+const viewJob = (id) => {
+  return $.ajax({
+    url: config.apiUrl + '/jobs/' + id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const deleteJob = (id) => {
   return $.ajax({
     url: config.apiUrl + '/jobs/' + id,
@@ -79,6 +89,8 @@ const editJob = (id, data) => {
     data: data
   })
 }
+
+const updateJob =
 module.exports = {
   signUp,
   signIn,
@@ -87,5 +99,6 @@ module.exports = {
   createJob,
   viewJobs,
   deleteJob,
-  editJob
+  editJob,
+  viewJob
 }

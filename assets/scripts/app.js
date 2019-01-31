@@ -87,7 +87,17 @@ $(() => {
   $('#view-jobs').on('click', events.onViewJobs)
   $('#job-list-body').on('click', '#delete-button', events.onDeleteJob)
   $('#job-list-body').on('click', '#edit-button', events.onEditJob)
+  $('.view-one-job').on('submit', events.onViewOneJob)
+  $('body').on('submit', '#update-job', events.onUpdateJob)
   $("input[data-type='currency']").on({
+    keyup: function () {
+      formatCurrency($(this))
+    },
+    blur: function () {
+      formatCurrency($(this), 'blur')
+    }
+  })
+  $('body').on("input[data-type='currency']", {
     keyup: function () {
       formatCurrency($(this))
     },

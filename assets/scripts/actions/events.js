@@ -44,7 +44,6 @@ const onCreateJob = (event) => {
 }
 
 const onViewJobs = (event) => {
-  event.preventDefault()
   api.viewJobs()
     .then(ui.onViewJobsSuccess)
     .catch(ui.onViewJobsFailure)
@@ -66,10 +65,37 @@ const onEditJob = (event) => {
   const id = event.target.dataset.id
   console.log('id is:', id)
   // console.log('data is:', data)
-  api.getJob(id)
-    .then(ui.onEditJobSuccess)
-    .catch(ui.onEditJobFailure)
+  api.viewJob(id)
+    .then(ui.onViewJobSuccess)
+    .catch(ui.onViewJobFailure)
 }
+
+const onViewOneJob = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  const id = data.job.id
+  console.log(id)
+  api.viewJob(id)
+    .then(ui.onViewOneJobSuccess)
+    .catch(ui.onViewOneJobFailure)
+}
+
+const onUpdateJob = (event) => {
+  event.preventDefault()
+
+  const data = getFormFields(event.target)
+  console.log(data)
+  const id = event.target.dataset.id
+  console.log('id is:', id)
+  api.editJob(id, data)
+    .then(() => {
+      ui.onUpdateJobSuccess()
+      onViewJobs()
+    })
+    .catch(ui.onUpdateJobFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -78,5 +104,7 @@ module.exports = {
   onCreateJob,
   onViewJobs,
   onDeleteJob,
-  onEditJob
+  onEditJob,
+  onViewOneJob,
+  onUpdateJob
 }
