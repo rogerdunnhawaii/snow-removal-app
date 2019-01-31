@@ -34,9 +34,77 @@ const onSignOut = () => {
     .catch(ui.onSignOutFailure)
 }
 
+const onCreateJob = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  api.createJob(data)
+    .then(ui.onCreateJobSuccess)
+    .catch(ui.onCreateJobFailure)
+}
+
+const onViewJobs = (event) => {
+  api.viewJobs()
+    .then(ui.onViewJobsSuccess)
+    .catch(ui.onViewJobsFailure)
+}
+
+const onDeleteJob = (event) => {
+  event.preventDefault()
+  console.log(event)
+  const id = event.target.dataset.id
+  console.log(id)
+  api.deleteJob(id)
+    .then(ui.onDeleteJobSuccess)
+    .catch(ui.onDeleteJobFailure)
+}
+
+const onEditJob = (event) => {
+  event.preventDefault()
+  // const data = getFormFields(event.target)
+  const id = event.target.dataset.id
+  console.log('id is:', id)
+  // console.log('data is:', data)
+  api.viewJob(id)
+    .then(ui.onViewJobSuccess)
+    .catch(ui.onViewJobFailure)
+}
+
+const onViewOneJob = (event) => {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log(data)
+  const id = data.job.id
+  console.log(id)
+  api.viewJob(id)
+    .then(ui.onViewOneJobSuccess)
+    .catch(ui.onViewOneJobFailure)
+}
+
+const onUpdateJob = (event) => {
+  event.preventDefault()
+
+  const data = getFormFields(event.target)
+  console.log(data)
+  const id = event.target.dataset.id
+  console.log('id is:', id)
+  api.editJob(id, data)
+    .then(() => {
+      ui.onUpdateJobSuccess()
+      onViewJobs()
+    })
+    .catch(ui.onUpdateJobFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  onCreateJob,
+  onViewJobs,
+  onDeleteJob,
+  onEditJob,
+  onViewOneJob,
+  onUpdateJob
 }
