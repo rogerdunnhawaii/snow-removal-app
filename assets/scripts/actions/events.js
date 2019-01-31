@@ -14,6 +14,7 @@ const onSignIn = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log(data)
+  $('form').trigger('reset')
   api.signIn(data)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
@@ -23,6 +24,7 @@ const onChangePassword = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log(data)
+  $('form').trigger('reset')
   api.changePassword(data)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
@@ -38,6 +40,7 @@ const onCreateJob = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log(data)
+  $('form').trigger('reset')
   api.createJob(data)
     .then(ui.onCreateJobSuccess)
     .catch(ui.onCreateJobFailure)
@@ -64,6 +67,7 @@ const onEditJob = (event) => {
   // const data = getFormFields(event.target)
   const id = event.target.dataset.id
   console.log('id is:', id)
+  $('form').trigger('reset')
   // console.log('data is:', data)
   api.viewJob(id)
     .then(ui.onViewJobSuccess)
@@ -74,6 +78,7 @@ const onViewOneJob = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log(data)
+  $('form').trigger('reset')
   const id = data.job.id
   console.log(id)
   api.viewJob(id)
@@ -83,7 +88,6 @@ const onViewOneJob = (event) => {
 
 const onUpdateJob = (event) => {
   event.preventDefault()
-
   const data = getFormFields(event.target)
   console.log(data)
   const id = event.target.dataset.id

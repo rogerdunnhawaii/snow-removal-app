@@ -14,11 +14,16 @@ const onSignUpFailure = () => {
 
 const onSignInSuccess = (responseData) => {
   $('h2').html('you have successfully signed IN')
+  console.log('on sign in before store', store)
   store.user = responseData.user
+  store.user.token = responseData.user.token
+  console.log(store.user.token)
+  console.log('on sign in after store', store)
   $('#sign-out-button').show(500)
   $('#change-pw-button').show(500)
   $('#sign-in').fadeOut(500)
   $('#sign-up-button').fadeOut(500)
+  $('#sign-up').fadeOut(500)
   $('#create-job-button').show(500)
   $('#view-all-jobs-button').show(500)
   $('.view-one-job').show(500)
@@ -40,11 +45,14 @@ const onChangePasswordFailure = () => {
 
 const onSignOutSuccess = () => {
   store.user = null
+  console.log('on sign out success', store)
   $('h2').html('Successfully signed OUT')
   $('#sign-up-button').fadeIn(500)
   $('#sign-in-button').fadeIn(500)
   $('#sign-out-button').fadeOut(500)
   $('#change-pw-button').fadeOut(500)
+  $('.row-jobs').fadeOut(500)
+  $('#change-password').fadeOut(500)
 }
 
 const onSignOutFailure = () => {
