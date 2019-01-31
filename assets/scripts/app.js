@@ -17,66 +17,64 @@ function formatCurrency (input, blur) {
   // and puts cursor back in right position.
 
   // get input value
-  let input_val = input.val();
+  let inputValue = input.val()
 
   // don't validate empty input
-  if (input_val === "") { return; }
+  if (inputValue === '') { return }
 
   // original length
-  let original_len = input_val.length;
+  const originalLength = inputValue.length
 
   // initial caret position
-  let caret_pos = input.prop("selectionStart");
+  let caretPosition = input.prop('selectionStart')
 
   // check for decimal
-  if (input_val.indexOf(".") >= 0) {
-
+  if (inputValue.indexOf('.') >= 0) {
     // get position of first decimal
     // this prevents multiple decimals from
     // being entered
-    let decimal_pos = input_val.indexOf(".");
+    const decimalPosition = inputValue.indexOf('.')
 
     // split number by decimal point
-    let left_side = input_val.substring(0, decimal_pos);
-    let right_side = input_val.substring(decimal_pos);
+    let leftSide = inputValue.substring(0, decimalPosition)
+    let rightSide = inputValue.substring(decimalPosition)
 
     // add commas to left side of number
-    left_side = formatNumber(left_side);
+    leftSide = formatNumber(leftSide)
 
     // validate right side
-    right_side = formatNumber(right_side);
+    rightSide = formatNumber(rightSide)
 
     // On blur make sure 2 numbers after decimal
-    if (blur === "blur") {
-      right_side += "00";
+    if (blur === 'blur') {
+      rightSide += '00'
     }
 
     // Limit decimal to only 2 digits
-    right_side = right_side.substring(0, 2);
+    rightSide = rightSide.substring(0, 2)
 
     // join number by .
-    input_val = "$" + left_side + "." + right_side;
-
+    inputValue = '$' + leftSide + '.' + rightSide
   } else {
     // no decimal entered
     // add commas to number
     // remove all non-digits
-    input_val = formatNumber(input_val);
-    input_val = "$" + input_val;
+    inputValue = formatNumber(inputValue)
+    inputValue = '$' + inputValue
 
     // final formatting
-    if (blur === "blur") {
-      input_val += ".00"
+    if (blur === 'blur') {
+      inputValue += '.00'
     }
   }
 
   // send updated string to input
-  input.val(input_val);
+  input.val(inputValue)
 
   // put caret back in the right position
-  let updated_len = input_val.length;
-  caret_pos = updated_len - original_len + caret_pos;
-  input[0].setSelectionRange(caret_pos, caret_pos);
+  const updatedLength = inputValue.length
+  caretPosition = updatedLength - originalLength + caretPosition
+  input[0].setSelectionRange(caretPosition, caretPosition)
 }
 
 $(() => {
@@ -88,6 +86,7 @@ $(() => {
   $('#create-job').on('submit', events.onCreateJob)
   $('#view-jobs').on('click', events.onViewJobs)
   $('#job-list-body').on('click', '#delete-button', events.onDeleteJob)
+  $('#job-list-body').on('click', '#edit-button', events.onEditJob)
   $("input[data-type='currency']").on({
     keyup: function () {
       formatCurrency($(this))

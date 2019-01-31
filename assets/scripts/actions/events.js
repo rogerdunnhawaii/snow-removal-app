@@ -59,6 +59,17 @@ const onDeleteJob = (event) => {
     .then(ui.onDeleteJobSuccess)
     .catch(ui.onDeleteJobFailure)
 }
+
+const onEditJob = (event) => {
+  event.preventDefault()
+  // const data = getFormFields(event.target)
+  const id = event.target.dataset.id
+  console.log('id is:', id)
+  // console.log('data is:', data)
+  api.getJob(id)
+    .then(ui.onEditJobSuccess)
+    .catch(ui.onEditJobFailure)
+}
 module.exports = {
   onSignUp,
   onSignIn,
@@ -66,5 +77,6 @@ module.exports = {
   onSignOut,
   onCreateJob,
   onViewJobs,
-  onDeleteJob
+  onDeleteJob,
+  onEditJob
 }

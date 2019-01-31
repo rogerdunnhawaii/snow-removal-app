@@ -68,6 +68,17 @@ const deleteJob = (id) => {
     }
   })
 }
+
+const editJob = (id, data) => {
+  return $.ajax({
+    url: config.apiUrl + '/jobs/' + id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
 module.exports = {
   signUp,
   signIn,
@@ -75,5 +86,6 @@ module.exports = {
   signOut,
   createJob,
   viewJobs,
-  deleteJob
+  deleteJob,
+  editJob
 }
