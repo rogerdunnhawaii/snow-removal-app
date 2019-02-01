@@ -102,6 +102,7 @@ const onViewJobFailure = () => {
 
 const onUpdateJobSuccess = () => {
   $('h2').html('successfully Updated job')
+  $('#update-job').fadeOut(500)
 }
 
 const onUpdateJobFailure = () => {
