@@ -13,7 +13,6 @@ const onSignUp = (event) => {
 const onSignIn = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   $('form').trigger('reset')
   api.signIn(data)
     .then(ui.onSignInSuccess)
@@ -23,7 +22,6 @@ const onSignIn = (event) => {
 const onChangePassword = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   $('form').trigger('reset')
   api.changePassword(data)
     .then(ui.onChangePasswordSuccess)
@@ -31,6 +29,7 @@ const onChangePassword = (event) => {
 }
 
 const onSignOut = () => {
+  event.preventDefault()
   api.signOut()
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
@@ -39,7 +38,6 @@ const onSignOut = () => {
 const onCreateJob = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   $('form').trigger('reset')
   api.createJob(data)
     .then(ui.onCreateJobSuccess)
@@ -52,13 +50,16 @@ const onViewJobs = (event) => {
     .catch(ui.onViewJobsFailure)
 }
 
+const onViewJobsAfterDelete = () => {
+  api.viewJobs()
+    .then(ui.onViewJobsAfterDeleteSuccess)
+    .catch(ui.onViewJobsAfterDeleteFailure)
+}
 const onDeleteJob = (event) => {
   event.preventDefault()
-  console.log(event)
   const id = event.target.dataset.id
-  console.log(id)
   api.deleteJob(id)
-    .then(ui.onDeleteJobSuccess)
+    .then(() => onViewJobsAfterDelete(event))
     .catch(ui.onDeleteJobFailure)
 }
 
@@ -66,9 +67,7 @@ const onEditJob = (event) => {
   event.preventDefault()
   // const data = getFormFields(event.target)
   const id = event.target.dataset.id
-  console.log('id is:', id)
   $('form').trigger('reset')
-  // console.log('data is:', data)
   api.viewJob(id)
     .then(ui.onViewJobSuccess)
     .catch(ui.onViewJobFailure)
@@ -77,10 +76,8 @@ const onEditJob = (event) => {
 const onViewOneJob = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   $('form').trigger('reset')
   const id = data.job.id
-  console.log(id)
   api.viewJob(id)
     .then(ui.onViewOneJobSuccess)
     .catch(ui.onViewOneJobFailure)
@@ -89,9 +86,7 @@ const onViewOneJob = (event) => {
 const onUpdateJob = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log(data)
   const id = event.target.dataset.id
-  console.log('id is:', id)
   api.editJob(id, data)
     .then(() => {
       ui.onUpdateJobSuccess()

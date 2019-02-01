@@ -2,6 +2,7 @@ const store = require('../store')
 const jobsPageTemplate = require('../templates/helpers/job-page.handlebars')
 const updateJobPageTemplate = require('../templates/helpers/update-job-page.handlebars')
 const oneJobPageTemplate = require('../templates/helpers/one-job-page.handlebars')
+const events = require('./events.js')
 
 const onSignUpSuccess = () => {
   $('h2').html('you have successfully signed up')
@@ -14,19 +15,15 @@ const onSignUpFailure = () => {
 
 const onSignInSuccess = (responseData) => {
   $('h2').html('you have successfully signed IN')
-  console.log('on sign in before store', store)
   store.user = responseData.user
   store.user.token = responseData.user.token
-  console.log(store.user.token)
-  console.log('on sign in after store', store)
-  $('#sign-out-button').show(500)
-  $('#change-pw-button').show(500)
-  $('#sign-in').fadeOut(500)
+  $('.bottom-buttons').show(500)
+  $('.middle').fadeOut(500)
   $('#sign-up-button').fadeOut(500)
-  $('#sign-up').fadeOut(500)
-  $('#create-job-button').show(500)
-  $('#view-all-jobs-button').show(500)
-  $('.view-one-job').show(500)
+  $('.row-jobs').show()
+  $('.button-div').show()
+  $('#create-job').hide()
+  $('#view-one-job').hide()
 }
 
 const onSignInFailure = () => {
@@ -36,23 +33,21 @@ const onSignInFailure = () => {
 const onChangePasswordSuccess = () => {
   $('h2').html('you have successfully changed password')
   $('#change-password').fadeOut(500)
-    $('#change-pw-button').fadeIn(500)
+  $('#change-pw-button').fadeIn(500)
 }
 
 const onChangePasswordFailure = () => {
-    $('h2').html('you have UNsuccessfully changed password')
+  $('h2').html('you have UNsuccessfully changed password')
 }
 
 const onSignOutSuccess = () => {
   store.user = null
-  console.log('on sign out success', store)
   $('h2').html('Successfully signed OUT')
-  $('#sign-up-button').fadeIn(500)
-  $('#sign-in-button').fadeIn(500)
-  $('#sign-out-button').fadeOut(500)
-  $('#change-pw-button').fadeOut(500)
-  $('.row-jobs').fadeOut(500)
-  $('#change-password').fadeOut(500)
+  $('#sign-up-button').show()
+  $('#sign-in-button').show()
+  $('.bottom-buttons').fadeOut(500)
+  $('.job-content').fadeOut(500)
+  $('.button-div').fadeOut(500)
 }
 
 const onSignOutFailure = () => {
@@ -68,22 +63,27 @@ const onCreateJobFailure = () => {
 }
 
 const onViewJobsSuccess = (responseData) => {
-  $('h2').html('Successfully able to view Jobs')
-  $('#job-list-body').html('')
   const data = responseData
-  console.log(data)
   const jobsPageHtml = jobsPageTemplate({ jobs: data.jobs })
   $('#job-list-body').html(jobsPageHtml)
+  console.log(jobsPageHtml)
+  if (jobsPageHtml === '') {
+    $('h2').html('No jobs created yet')
+  } else {
+    $('h2').html('Successfully able to VIEW Jobs')
+  }
 }
 
 const onViewJobsFailure = () => {
   $('h2').html('Sadly UNable to view jobs')
 }
 
-const onDeleteJobSuccess = () => {
+const onViewJobsAfterDeleteSuccess = (data) => {
+  const jobsPageHtml = jobsPageTemplate({ jobs: data.jobs })
+  $('#job-list-body').html(jobsPageHtml)
   $('h2').html('Job successfully deleted')
 }
-const onDeleteJobFailure = () => {
+const onViewJobsAfterDeleteJobFailure = () => {
   $('h2').html('Job is still around, UNsuccessful at deleting')
 }
 
@@ -113,7 +113,6 @@ const onViewOneJobSuccess = (responseData) => {
   $('h2').html('you are now looking at one job')
   $('#job-list-body').html('')
   const data = responseData
-  console.log(data)
   const oneJobPageHtml = oneJobPageTemplate({ job: data.job })
   $('#job-list-body').html(oneJobPageHtml)
 }
@@ -134,8 +133,8 @@ module.exports = {
   onCreateJobFailure,
   onViewJobsSuccess,
   onViewJobsFailure,
-  onDeleteJobSuccess,
-  onDeleteJobFailure,
+  onViewJobsAfterDeleteSuccess,
+  onViewJobsAfterDeleteJobFailure,
   onViewJobSuccess,
   onViewJobFailure,
   onUpdateJobSuccess,
