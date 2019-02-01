@@ -81,13 +81,18 @@ $(() => {
   // your JS code goes here
   $('#sign-up-button').click(function () {
     $('#sign-up').fadeIn('slow')
+    $('#sign-in-button').fadeIn('slow')
+    $('#sign-in').fadeOut('slow')
     $('#sign-up-button').fadeOut(1000)
+    $('h2').html('Sign up please')
   })
   $('#sign-in-button').click(function () {
     $('.middle').show()
     $('#sign-in').fadeIn('slow')
     $('#sign-in-button').fadeOut(500)
+    $('#sign-up-button').fadeIn(500)
     $('#sign-up').fadeOut(500)
+    $('h2').html('Sign in please')
   })
   $('#change-pw-button').click(function () {
     $('#change-password').fadeIn('slow')
