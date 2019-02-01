@@ -2,7 +2,6 @@ const store = require('../store')
 const jobsPageTemplate = require('../templates/helpers/job-page.handlebars')
 const updateJobPageTemplate = require('../templates/helpers/update-job-page.handlebars')
 const oneJobPageTemplate = require('../templates/helpers/one-job-page.handlebars')
-const events = require('./events.js')
 
 const onSignUpSuccess = () => {
   $('h2').html('you have successfully signed up')
@@ -18,12 +17,12 @@ const onSignInSuccess = (responseData) => {
   store.user = responseData.user
   store.user.token = responseData.user.token
   $('.bottom-buttons').show(500)
+  $('.button-div').show()
+
+  $('.create-job-div').hide()
+  $('#view-one-job').hide()
   $('.middle').fadeOut(500)
   $('#sign-up-button').fadeOut(500)
-  $('.row-jobs').show()
-  $('.button-div').show()
-  $('#create-job').hide()
-  $('#view-one-job').hide()
 }
 
 const onSignInFailure = () => {

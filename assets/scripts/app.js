@@ -96,9 +96,10 @@ $(() => {
   })
   $('#change-pw-button').click(function () {
     $('#change-password').fadeIn('slow')
-    $('#change-pw-button').fadeOut(1000)
   })
   $('#create-job-button').click(function () {
+    $('.job-content').show()
+    $('.create-job-div').show()
     $('#create-job').show()
     $('.view-one-job').fadeOut(1000)
     $('#view-all-jobs').fadeOut('slow')
@@ -114,9 +115,12 @@ $(() => {
   })
   $('#view-one-job-button').click(function () {
     $('.view-one-job').fadeIn('slow')
-    $('#create-job').fadeOut(1000)
-    $('#create-job-button').show()
-    $('#view-all-jobs').fadeOut('slow')
+    $('#create-job').fadeOut(400)
+    $('.job-content').show()
+    $('#view-all-jobs').fadeOut(300)
+  })
+  $('#sign-out-button').click(function () {
+    $('#change-password').fadeOut('slow')
   })
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
