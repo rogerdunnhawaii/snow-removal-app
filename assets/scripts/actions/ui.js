@@ -65,7 +65,6 @@ const onViewJobsSuccess = (responseData) => {
   const data = responseData
   const jobsPageHtml = jobsPageTemplate({ jobs: data.jobs })
   $('#job-list-body').html(jobsPageHtml)
-  console.log(jobsPageHtml)
   if (jobsPageHtml === '') {
     $('h2').html('No jobs created yet')
   } else {

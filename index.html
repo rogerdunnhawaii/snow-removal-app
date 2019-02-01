@@ -99,7 +99,7 @@
       <input type="text" name="job[Worker]" placeholder="Worker Name" required>
       <br>
       Price:<br>
-      <input type="text" name="job[Price]" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" placeholder="Price of Job" data-type="currency" required>
+      <input type="text" name="job[Price]" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" placeholder="Price of Job" data-type="currency" maxlength = "10" required>
       <br>
       Address:<br>
       <input type="string" name="job[Address]" placeholder="Address" required>
@@ -116,6 +116,9 @@
         <option value="Closed">Closed</option>
         <option value="In-Progress">In-Progress</option>
       </select>
+      <br>
+      Add Pictures of the Areas needing snow removal:<br>
+      <input type="file" id="file-upload" name="file" multiple accept="image/*,.pdf">
       <br>
       <input type="submit" value="Create Job">
     </form>

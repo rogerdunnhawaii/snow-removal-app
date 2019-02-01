@@ -39,6 +39,7 @@ const onCreateJob = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
   $('form').trigger('reset')
+  console.log('on create job', data)
   api.createJob(data)
     .then(ui.onCreateJobSuccess)
     .catch(ui.onCreateJobFailure)
