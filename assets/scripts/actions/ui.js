@@ -80,6 +80,7 @@ const onViewJobsAfterDeleteSuccess = (data) => {
   const jobsPageHtml = jobsPageTemplate({ jobs: data.jobs })
   $('#job-list-body').html(jobsPageHtml)
   $('h2').html('Job successfully deleted')
+  $('#update-job').hide()
 }
 const onViewJobsAfterDeleteJobFailure = () => {
   $('h2').html('Job is still around, UNsuccessful at deleting')
