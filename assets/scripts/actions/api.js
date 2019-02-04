@@ -1,6 +1,7 @@
 const config = require('../config.js')
 const store = require('../store')
 
+// all the api commands for authentication and CRUD.  apiUrl depends on if running locally vs. remotely.
 const signUp = (data) => {
   return $.ajax({
     url: config.apiUrl + '/sign-up',
@@ -90,7 +91,6 @@ const editJob = (id, data) => {
   })
 }
 
-const updateJob =
 module.exports = {
   signUp,
   signIn,

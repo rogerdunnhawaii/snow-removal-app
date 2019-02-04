@@ -1,7 +1,10 @@
+// required files to make this file Work
+
 const getFormFields = require('../../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
+// actions which happen on clicking the sign up buttton, grabbing data from the form inputs and then passing data to api and then displaying response data on the UI
 const onSignUp = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -10,6 +13,7 @@ const onSignUp = (event) => {
     .catch(ui.onSignUpFailure)
 }
 
+// actions which happen on clicking the sign in buttton, grabbing data from the form inputs and then passing data to api and then displaying response data on the UI
 const onSignIn = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -19,15 +23,18 @@ const onSignIn = (event) => {
     .catch(ui.onSignInFailure)
 }
 
+// actions which happen on clicking the change password buttton, grabbing data from the form inputs and then passing data to api and then displaying response data on the UI
 const onChangePassword = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
+  // clears out the form
   $('form').trigger('reset')
   api.changePassword(data)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
 }
 
+// actions which happen on clicking the sign out buttton, grabbing data from the form inputs and then passing data to api and then displaying response data on the UI
 const onSignOut = () => {
   event.preventDefault()
   api.signOut()
@@ -35,16 +42,18 @@ const onSignOut = () => {
     .catch(ui.onSignOutFailure)
 }
 
+// actions which happen on clicking the create job buttton, grabbing data from the form inputs and then passing data to api and then displaying response data on the UI
 const onCreateJob = (event) => {
   event.preventDefault()
   const data = getFormFields(event.target)
+  // clears out the form
   $('form').trigger('reset')
-  console.log('on create job', data)
   api.createJob(data)
     .then(ui.onCreateJobSuccess)
     .catch(ui.onCreateJobFailure)
 }
 
+// actions which happen on clicking the view job buttton, displaying response data on the UI
 const onViewJobs = (event) => {
   api.viewJobs()
     .then(ui.onViewJobsSuccess)
@@ -56,6 +65,8 @@ const onViewJobsAfterDelete = () => {
     .then(ui.onViewJobsAfterDeleteSuccess)
     .catch(ui.onViewJobsAfterDeleteFailure)
 }
+
+// actions which happen on clicking the delete job buttton, grabbing data id from the event target and then passing data id to api and then displaying all jobs left after deletion
 const onDeleteJob = (event) => {
   event.preventDefault()
   const id = event.target.dataset.id

@@ -3,6 +3,8 @@ const jobsPageTemplate = require('../templates/helpers/job-page.handlebars')
 const updateJobPageTemplate = require('../templates/helpers/update-job-page.handlebars')
 const oneJobPageTemplate = require('../templates/helpers/one-job-page.handlebars')
 
+// UI actions necessary to make the front-end look nice. either displaying data, or making things hide or show, or messages appear after clicking a button
+
 const onSignUpSuccess = () => {
   $('h2').html('you have successfully signed up')
   $('#sign-up').fadeOut(500)

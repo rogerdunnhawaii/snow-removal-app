@@ -79,6 +79,10 @@ function formatCurrency (input, blur) {
 
 $(() => {
   // your JS code goes here
+
+  // click on a button and get other buttons to fade in or out
+
+  // sign up button actions
   $('#sign-up-button').click(function () {
     $('#sign-up').fadeIn('slow')
     $('#sign-in-button').fadeIn('slow')
@@ -86,6 +90,8 @@ $(() => {
     $('#sign-up-button').fadeOut(1000)
     $('h2').html('Sign up please')
   })
+
+  // sign in button actions
   $('#sign-in-button').click(function () {
     $('.middle').show()
     $('#sign-in').fadeIn('slow')
@@ -94,9 +100,13 @@ $(() => {
     $('#sign-up').fadeOut(500)
     $('h2').html('Sign in please')
   })
+
+  // change password button actions
   $('#change-pw-button').click(function () {
     $('#change-password').fadeIn('slow')
   })
+
+  // create job button actions
   $('#create-job-button').click(function () {
     $('.job-content').show()
     $('.create-job-div').show()
@@ -105,7 +115,7 @@ $(() => {
     $('#view-all-jobs').fadeOut('slow')
     $('#update-job').hide()
   })
-
+  // view jobs button actions
   $('#view-all-jobs-button').click(function () {
     $('#view-all-jobs').fadeIn(300)
     $('#job-list-body').fadeIn(300)
@@ -113,15 +123,21 @@ $(() => {
     $('.view-one-job').fadeOut(1000)
     events.onViewJobs()
   })
+
+  // view one job button which I later deleted from the UI
   $('#view-one-job-button').click(function () {
     $('.view-one-job').fadeIn('slow')
     $('#create-job').fadeOut(400)
     $('.job-content').show()
     $('#view-all-jobs').fadeOut(300)
   })
+
+  // sign out button actions
   $('#sign-out-button').click(function () {
     $('#change-password').fadeOut('slow')
   })
+
+  // actions that happen after you click submit button for authentication and the buttons on the forms or ability to update/delete
   $('#sign-up').on('submit', events.onSignUp)
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
@@ -131,6 +147,8 @@ $(() => {
   $('#job-list-body').on('click', '#edit-button', events.onEditJob)
   $('.view-one-job').on('submit', events.onViewOneJob)
   $('body').on('submit', '#update-job', events.onUpdateJob)
+
+  // code required to display the price format properly
   $("input[data-type='currency']").on({
     keyup: function () {
       formatCurrency($(this))
