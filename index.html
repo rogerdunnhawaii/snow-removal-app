@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Roger's Snow Removal App</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css?family=Major+Mono+Display|Righteous" rel="stylesheet">
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+
+
+<body>
+  <nav>
+    <div class="container">
+
+      <div class="logo">
+        <h1>Roger's Snow Removal App</h1>
+      </div>
+
+      <div class="middle-buttons">
+        <button id="sign-up-button">Sign Up</button>
+        <button id="sign-in-button">Sign In</button>
+      </div>
+
+      <div class="bottom-buttons">
+        <button id="change-pw-button">Change Password</button>
+        <button id="sign-out-button" type="button" name="Sign Out" value="Sign Out">Sign Out</button>
+      </div>
+
+    </div>
+  </nav>
+
+
+<h2>Welcome to my app!</h2>
+  <div class="container authentication">
+    <div class="top">
+      <form id='sign-up'>
+        Name:<br>
+        <input type="text" name="name" placeholder="Mary Smith">
+        <br>
+        Email:<br>
+        <input type="email" name="credentials[email]" placeholder="abc@abc.com">
+        <br>
+        Password:<br>
+        <input type="password" name="credentials[password]" placeholder="password">
+        <br>
+        Confirm Password:<br>
+        <input type="password" name="credentials[password_confirmation]" placeholder="type same password">
+        <br><br>
+        <input type="submit" value="Sign up">
+      </form>
+    </div>
+
+    <div class="middle">
+      <form id='sign-in' action="sign-in">
+        Email:<br>
+        <input type="email" name="credentials[email]" placeholder="abc@abc.com">
+        <br>
+        Password:<br>
+        <input type="password" name="credentials[password]" placeholder="password">
+        <br><br>
+        <input type="submit" value="Sign In">
+      </form>
+    </div>
+
+    <div class="bottom">
+      <form id='change-password' action="change-password">
+        Old Password:<br>
+        <input type="password" name="passwords[old]" placeholder="old password">
+        <br>
+        New Password:<br>
+        <input type="password" name="passwords[new]" placeholder="new password">
+        <br>
+        <br>
+        <input type="submit" value="Change Password">
+      </form>
+    </div>
+
+  </div>
+
+  <div class="button-div">
+    <button type="button" id='create-job-button'>Create Job</button>
+    <!-- <button type="button" name="button" id="view-one-job-button">View One Job</button> -->
+    <button id='view-all-jobs-button'>View all Jobs</button>
+  </div>
+
+<div class="job-content">
+  <div class="create-job-div">
+    <form id='create-job' action="/jobs">
+      <h4> Create a new job</h4>
+      Customer Name:<br>
+      <input type="text" name="job[Customer]" placeholder="Customer Name" required>
+      <br>
+      Worker Name:<br>
+      <input type="text" name="job[Worker]" placeholder="Worker Name" required>
+      <br>
+      Price:<br>
+      <input type="text" name="job[Price]" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" placeholder="Price of Job" data-type="currency" required maxlength = "10">
+      <br>
+      Address:<br>
+      <input type="text" name="job[Address]" placeholder="Address" required>
+      <br>
+      Date:<br>
+      <input type="date" min="2018-01-01" max="2021-12-31" name="job[Date]" placeholder="Date" required>
+      <br>
+      Time:<br>
+      <input type="time" min="7:00" max="18:00" name="job[Time]" placeholder="Time" required>
+      <br>
+      Status:<br>
+      <select name="job[status]" size="3" required>
+        <option value="Open">Open</option>
+        <option value="Closed">Closed</option>
+        <option value="In-Progress">In-Progress</option>
+      </select>
+      <input type="submit" value="Create Job">
+    </form>
+  </div>
+
+  <div id='view-jobs' class="col-sm">
+    <form class="view-one-job">
+      <input type="number" name="job[id]" value="" placeholder="Search by Job ID">
+      <input type="submit" value='Search'>
+    </form>
+
+    <table id='view-all-jobs' class="table table-striped">
+      <thead>
+        <tr>
+          <th>Customer</th>
+          <th>Worker</th>
+          <th>Price</th>
+          <th>Address</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Status</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="job-list-body">
+
+      </tbody>
+    </table>
+  </div>
+  <div class="col-sm" id="update-job-form"> </div>
+  </div>
+
+  </body>
+</html>
