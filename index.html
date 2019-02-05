@@ -105,10 +105,10 @@
       <input type="text" name="job[Address]" placeholder="Address" required>
       <br>
       Date:<br>
-      <input type="date" name="job[Date]" placeholder="Date" required>
+      <input type="date" min="2018-01-01" max="2021-12-31" name="job[Date]" placeholder="Date" required>
       <br>
       Time:<br>
-      <input type="time" name="job[Time]" placeholder="Time" required>
+      <input type="time" min="7:00" max="18:00" name="job[Time]" placeholder="Time" required>
       <br>
       Status:<br>
       <select name="job[status]" size="3" required>
