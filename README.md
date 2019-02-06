@@ -8,8 +8,14 @@ api-client project to enable snow removal customers and workers to interact with
 
 The client communicates with the api server.  We are using Heroku as the api server.  The client allows for user login functionality and ability to create and modify jobs created by the user.
 
-## here is the link to the other repo:
+## here is the link to the other repo and more:
 https://github.com/rogerdunnhawaii/snow-removal-app-api
+
+Link to deployed API:
+https://sleepy-gorge-26062.herokuapp.com/
+
+Link to deployed client:
+https://rogerdunnhawaii.github.io/snow-removal-app-client/
 
 ## here is the link to wireframes and user stories:
 
